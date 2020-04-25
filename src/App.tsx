@@ -1,93 +1,28 @@
-import * as React from 'react';
-import { observer } from 'mobx-react';
-import { observable } from 'mobx';
+import * as React from 'react'
 
 import {
-	SafeAreaView,
-	StyleSheet,
-	ScrollView,
-	View,
-	Text,
-	StatusBar,
 	Button,
-} from 'react-native';
+	SafeAreaView,
+	ScrollView,
+	StatusBar,
+	StyleSheet,
+	Text,
+	View,
+} from 'react-native'
 
 import {
-	Header,
-	LearnMoreLinks,
 	Colors,
 	DebugInstructions,
+	Header,
+	LearnMoreLinks,
 	ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+} from 'react-native/Libraries/NewAppScreen'
 
-declare const global: {HermesInternal: null | {}};
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
 
 
-@observer
-export class App extends React.Component {
-
-	@observable
-	private buttonCount = 5;
-
-	render() {
-	return (
-		<>
-			<StatusBar barStyle="dark-content" />
-			<SafeAreaView>
-				<ScrollView
-					contentInsetAdjustmentBehavior="automatic"
-					style={styles.scrollView}>
-					<Header />
-					{global.HermesInternal == null ? null : (
-						<View style={styles.engine}>
-							<Text style={styles.footer}>Engine: Hermes</Text>
-						</View>
-					)}
-					<View style={styles.body}>
-						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>Step One</Text>
-							<Text style={styles.sectionDescription}>
-								Edit <Text style={styles.highlight}>App.tsx</Text> to change
-								this screen and then come back to see your edits.
-							</Text>
-						</View>
-						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>See Your Changes</Text>
-							<View>
-								<ReloadInstructions />
-							</View>
-						</View>
-
-						<View style={styles.sectionContainer}>
-							<Text>You pressed button {this.buttonCount} times.</Text>
-						</View>
-
-						<Button
-							onPress={() => this.buttonCount++}
-							title="Press me"
-						/>
-
-						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>Debug</Text>
-							<Text style={styles.sectionDescription}>
-								<DebugInstructions />
-							</Text>
-						</View>
-						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>Learn More</Text>
-							<Text style={styles.sectionDescription}>
-								Read the docs to discover what to do next:
-							</Text>
-						</View>
-						<LearnMoreLinks />
-					</View>
-				</ScrollView>
-			</SafeAreaView>
-		</>
-	);
-};
-
-}
+declare const global: {HermesInternal: null | {}}
 
 
 const styles = StyleSheet.create({
@@ -127,4 +62,76 @@ const styles = StyleSheet.create({
 		paddingRight: 12,
 		textAlign: 'right',
 	},
-});
+})
+
+
+@observer
+export class App extends React.Component {
+	@observable
+	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+	private buttonCount = 5
+
+	render() {
+
+		return (
+			<>
+				<StatusBar barStyle="dark-content" />
+				<SafeAreaView>
+					<ScrollView
+						contentInsetAdjustmentBehavior="automatic"
+						style={styles.scrollView}>
+						<Header />
+						{/* {global.HermesInternal == null ? null :
+							(<View style={styles.engine}>
+								<Text style={styles.footer}>Engine: Hermes</Text>
+							</View>
+						} */}
+						<View style={styles.body}>
+							<View style={styles.sectionContainer}>
+								<Text style={styles.sectionTitle}>Step One</Text>
+								<Text style={styles.sectionDescription}>
+									Edit <Text style={styles.highlight}>App.tsx</Text> to
+									change this screen and then come back to see your
+									edits.
+								</Text>
+							</View>
+							<View style={styles.sectionContainer}>
+								<Text style={styles.sectionTitle}>
+									See Your Changes
+								</Text>
+								<View>
+									<ReloadInstructions />
+								</View>
+							</View>
+
+							<View style={styles.sectionContainer}>
+								<Text>
+									You pressed button {this.buttonCount} times.
+								</Text>
+							</View>
+
+							<Button
+								onPress={() => this.buttonCount++}
+								title="Press me"
+							/>
+
+							<View style={styles.sectionContainer}>
+								<Text style={styles.sectionTitle}>Debug</Text>
+								<Text style={styles.sectionDescription}>
+									<DebugInstructions />
+								</Text>
+							</View>
+							<View style={styles.sectionContainer}>
+								<Text style={styles.sectionTitle}>Learn More</Text>
+								<Text style={styles.sectionDescription}>
+									Read the docs to discover what to do next:
+								</Text>
+							</View>
+							<LearnMoreLinks />
+						</View>
+					</ScrollView>
+				</SafeAreaView>
+			</>
+		)
+	}
+}

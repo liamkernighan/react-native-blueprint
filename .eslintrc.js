@@ -8,8 +8,7 @@ module.exports = {
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
-		'project': 'tsconfig.json',
-		'tsconfigRootDir': '.',
+		'project': './tsconfig.json',
 	},
 	plugins: [
 		'react',
@@ -21,6 +20,8 @@ module.exports = {
 		'sonarjs',
 	],
   	rules: {
+
+		'prettier/prettier': 0,
 
 		//#region common rules
 		'arrow-body-style': ['error', 'as-needed'],
@@ -78,6 +79,7 @@ module.exports = {
 		'prefer-promise-reject-errors': 'error',
 		'quotes': ['error', 'single'],
 		'rest-spread-spacing': ['error', 'never'],
+		'semi': 'off',
 		'semi-spacing': 'error',
 		'sort-imports': 'error',
 		'space-before-blocks': 'error',
@@ -127,6 +129,7 @@ module.exports = {
 	  '@typescript-eslint/prefer-function-type': 'warn', // Use function types instead of interfaces with call signatures
 	  '@typescript-eslint/prefer-readonly': 'warn', // Requires that private members are marked as readonly if they're never modified outside of the constructor
 	  '@typescript-eslint/no-explicit-any': 'off',
+	  '@typescript-eslint/explicit-function-return-type': 'off',
 
 	  '@typescript-eslint/naming-convention': [
 		'error',
@@ -140,7 +143,6 @@ module.exports = {
 				'selector': 'memberLike',
 				'modifiers': ['private', 'readonly'],
 				'format': ['camelCase'],
-				'leadingUnderscore': 'require',
 			},
 	  ],
 	  '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^_$' }],
@@ -155,13 +157,11 @@ module.exports = {
 		//#region react plugin rules
 
 		'react/no-set-state': 'error',
-		'react/no-danger': 'error', // Prevent usage of dangerous JSX properties
+		'react/no-danger': 'error',
 		'react/no-deprecated': 'error',
-		'react/no-this-in-sfc': 'error', // Prevent using this in stateless functional components
-		'react/prefer-stateless-function': 'error', // Enforce stateless React Components to be written as a pure function
+		'react/no-this-in-sfc': 'error',
+		'react/prefer-stateless-function': 'error',
 		'react/jsx-filename-extension': ['error', { 'extensions': ['.tsx'] }],
-		'react/jsx-no-bind': 'error', // Prevent usage of .bind() and arrow functions in JSX props
-		'react/jsx-no-literals': 'warn', //  Prevent usage of unwrapped JSX strings
 		'react/jsx-no-useless-fragment': 'error',
 		'react/jsx-pascal-case': 'error',
 
